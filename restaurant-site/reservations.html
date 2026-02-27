@@ -3,12 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
     <title>Gus's Galaxy Grill</title>
 </head>
 <a href="index.html">Home</a>
 <a href="menu.html">Menu</a>
 <a href="reservations.html">Reservations</a>
 <body>
+    <p>Reservations are request only! No guarantee tables will be open. Gus's Galaxy Grill proudly serves
+        our space truckers, and usually accepts walk-ins. If you can't find a table, there'll be plenty of
+        space at the bar!
 
+        If you would like to request a reservation please fill out the form below.
+    </p>
+    <form>
+        <label>First Name: <input type="text"> </label>
+        <label>Last Name: <input type="text"> </label>
+        <label>Email: <input type="email"> </label>
+        <label>Party size: <input type="number"> </label>
+        <label>Date: <input type="date"> </label>
+        <label>Time: <input type="time"> </label>
+        <fieldset>
+            <legend>
+                Seating preference:
+                (If selecting spaceport, please specify which port in your notes so our waiting staff can find you.)
+            </legend>
+            <label><input type="radio" value="Indoor"></label>
+            <label><input type="radio" value="Outdoor"></label>
+            <label><input type="radio" value="Spaceport"></label>
+        </fieldset>
+        <label>Notes: <input type="text"> </label>
+        <label>Newsletter opt-in:
+            <input type="checkbox">
+        </label>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
 </body>
 </html>

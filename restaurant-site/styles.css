@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide');
+@import url('https://fonts.googleapis.com/css?family=Mr Dafoe');
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+body{
+    background-color: #221D1D;
+    display: flex;
+    flex-direction: column;
+}
+h1{
+    color:#3C859F;
+    font-size: 100px;
+    font-family: "Audiowide", sans-serif;
+    font-style: oblique;
+
+}
+.heroHeader{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content:center;
+}
+h1 {
+      font-family:"Audiowide", serif;
+      line-height:1em;
+      color:#db1313;
+      font-weight:bold;
+      font-size:120px;
+    text-shadow:0px 0px 0 rgb(224,221,220),1px 1px 0 rgb(209,206,205),2px 2px 0 rgb(195,192,191),3px 3px 0 rgb(180,177,176),4px 4px 0 rgb(166,163,162),5px 5px 0 rgb(151,148,147), 6px 6px 0 rgb(137,134,133),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}
+.headerTwoWrapper{
+    display:inline-flex;
+    flex-direction: row;
+    padding-left: 50px;
+}
+.from{
+    font-family:"Audiowide", serif;
+    color:#d2908e;
+    font-size:70px;
+    text-shadow:0px 0px 0 rgb(36,109,135),1px 1px 0 rgb(21,94,120),2px 2px 0 rgb(7,80,106),3px 3px 0 rgb(-8,65,91),4px 4px 0 rgb(-22,51,77),5px 5px 0 rgb(-37,36,62), 6px 6px 0 rgb(-51,22,48),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+}
+.spaceStopWrapper{
+    filter: drop-shadow(5px 5px 10px rgb(247, 245, 243))
+}
+.spaceStop{
+    padding: 30px;
+    background-color: #ead344;
+    shape-outside: polygon(0 0,200% 50%, 0 100%, 0 100%);
+    clip-path: polygon(0 0, 200% 50%, 0 100%, 0 100%);
+    font-family:"Gugi", serif;
+    color:#f7f5f3;
+    font-size:70px;
+    text-shadow:0px 0px 0 rgb(195,-5,-5),1px 1px 0 rgb(180,-20,-20),2px 2px 0 rgb(166,-34,-34),3px 3px 0 rgb(151,-49,-49),4px 4px 0 rgb(137,-63,-63),5px 5px 0 rgb(122,-78,-78), 6px 6px 0 rgb(108,-92,-92),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+}
+.headerWrapper{
+    display: inline;
+    flex-direction: row;
+}
+.tagLineWrapper{
+    display: inline-flex;
+    flex-direction: row;
+    transform: rotate(-5deg);
+    width: fit-content;
+}
+.tagLine{
+    font-family:"Mr Dafoe", serif;
+    color:#4CB1D4;
+    font-size:70px;
+    text-shadow:0px 0px 0 rgb(186,120,118),1px 1px 0 rgb(171,105,103),2px 2px 0 rgb(157,91,89),3px 3px 0 rgb(142,76,74),4px 4px 0 rgb(128,62,60),5px 5px 0 rgb(113,47,45), 6px 6px 0 rgb(99,33,31),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+    text-align: right;
+    padding-right: 50px;
+    /*text-shadow:0px 0px 0 rgb(186,120,118),1px 1px 0 rgb(171,105,103),2px 2px 0 rgb(157,91,89),3px 3px 0 rgb(142,76,74),4px 4px 0 rgb(128,62,60),5px 5px 0 rgb(113,47,45), 6px 6px 0 rgb(99,33,31),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}*/
+    /*text-shadow:0px 0px 0 rgb(224,221,220),1px 1px 0 rgb(209,206,205),2px 2px 0 rgb(195,192,191),3px 3px 0 rgb(180,177,176),4px 4px 0 rgb(166,163,162),5px 5px 0 rgb(151,148,147), 6px 6px 0 rgb(137,134,133),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);*/
+    /*text-shadow:0px 0px 0 rgb(36,109,135),1px 1px 0 rgb(21,94,120),2px 2px 0 rgb(7,80,106),3px 3px 0 rgb(-8,65,91),4px 4px 0 rgb(-22,51,77),5px 5px 0 rgb(-37,36,62), 6px 6px 0 rgb(-51,22,48),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}*/
+    /*text-shadow:0px 0px 0 rgb(195,-5,-5),1px 1px 0 rgb(180,-20,-20),2px 2px 0 rgb(166,-34,-34),3px 3px 0 rgb(151,-49,-49),4px 4px 0 rgb(137,-63,-63),5px 5px 0 rgb(122,-78,-78), 6px 6px 0 rgb(108,-92,-92),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}*/
+}
+a { color: inherit}
+.nav{
+    margin-Top: 1rem;
+    display: inline-block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-self: center;
+    font-family:"Audiowide", serif;
+    color:#d2908e;
+    font-size:70px;
+    text-shadow:0px 0px 0 rgb(36,109,135),1px 1px 0 rgb(21,94,120),2px 2px 0 rgb(7,80,106),3px 3px 0 rgb(-8,65,91),4px 4px 0 rgb(-22,51,77),5px 5px 0 rgb(-37,36,62), 6px 6px 0 rgb(-51,22,48),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+}
+.navItems{
+    display: flex;
+    gap: 10rem;
+
+}
+.container{
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+h2{
+    background-color:#4CB1D4;
+}
+
