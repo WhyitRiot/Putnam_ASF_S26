@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
 @import url('https://fonts.googleapis.com/css?family=Mr Dafoe');
 @import url('https://fonts.googleapis.com/css?family=Gugi');
-body{
-    background-color: #221D1D;
+.heroBody{
+    /*background-color: #221D1D;*/
+    background-image: url("./images/Black And White Loop GIF by Pi-Slices.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
 }
