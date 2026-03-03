@@ -1,6 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
 @import url('https://fonts.googleapis.com/css?family=Mr Dafoe');
 @import url('https://fonts.googleapis.com/css?family=Gugi');
+@import url('https://fonts.googleapis.com/css2?family=Atomic+Age&family=Mr+Dafoe&display=swap');
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffff;
+    background-image: url("./images/Black And White Loop GIF by Pi-Slices.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+p {
+    font-family: "Audiowide", sans-serif;
+    font-size: 2rem;
+    margin: 1rem;
+}
+table{
+    border: dotted;
+}
+.tdHeader{
+    font-family: "Atomic Age", system-ui;
+    font-size: 3rem;
+    margin: 1rem;
+}
 .heroBody{
     /*background-color: #221D1D;*/
     background-image: url("./images/Black And White Loop GIF by Pi-Slices.gif");
