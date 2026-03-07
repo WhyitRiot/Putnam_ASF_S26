@@ -10,20 +10,61 @@ body{
     background-image: url("./images/Black And White Loop GIF by Pi-Slices.gif");
     background-repeat: no-repeat;
     background-size: cover;
+    margin-left: 12rem;
+    margin-right: 12rem;
 }
 p {
     font-family: "Audiowide", sans-serif;
     font-size: 2rem;
     margin: 1rem;
 }
-table{
-    border: dotted;
+.menuTagLine{
+    font-family: "Mr Dafoe", serif;
+    font-size: 4.5rem;
+    color: #ead344;
+    text-shadow:0px 0px 0 rgb(195,-5,-5),1px 1px 0 rgb(180,-20,-20),2px 2px 0 rgb(166,-34,-34),3px 3px 0 rgb(151,-49,-49),4px 4px 0 rgb(137,-63,-63),5px 5px 0 rgb(122,-78,-78), 6px 6px 0 rgb(108,-92,-92),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+    filter: drop-shadow(5px 5px 10px rgb(247, 245, 243));
 }
-.tdHeader{
+.tableTitle{
+    display: flex;
+    font-family:"Mr Dafoe", serif;
+    color:#4CB1D4;
+    font-size:5rem;
+    text-shadow:0px 0px 0 rgb(186,120,118),1px 1px 0 rgb(171,105,103),2px 2px 0 rgb(157,91,89),3px 3px 0 rgb(142,76,74),4px 4px 0 rgb(128,62,60),5px 5px 0 rgb(113,47,45), 6px 6px 0 rgb(99,33,31),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+    text-align: center;
+    padding-right: 50px;
+}
+.tableHeaderWrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+table{
+
+}
+.introWrapper{
+    margin: 1rem;
+}
+.tableWrapper{
+    background-color: #010000;
+    background-image: url("./images/Gus_Galaxy_Grill_Menu.jpg"), linear-gradient(#010000, #db1313 );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+td{
+    font-family: "Audiowide", sans-serif;
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+thead{
     font-family: "Atomic Age", system-ui;
     font-size: 3rem;
     margin: 1rem;
 }
+
 .heroBody{
     /*background-color: #221D1D;*/
     background-image: url("./images/Black And White Loop GIF by Pi-Slices.gif");
@@ -79,6 +120,19 @@ h1 {
 .headerWrapper{
     display: inline;
     flex-direction: row;
+}
+.menuWrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+.menuTageLineWrapper{
+    display: inline-flex;
+    flex-direction: row;
+    justify-items: right;
+    transform: rotate(-6deg);
+    width: fit-content;
 }
 .tagLineWrapper{
     display: inline-flex;
