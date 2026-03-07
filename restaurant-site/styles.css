@@ -16,7 +16,77 @@ body{
 p {
     font-family: "Audiowide", sans-serif;
     font-size: 2rem;
-    margin: 1rem;
+    margin: 2rem;
+}
+span{
+    align-content: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    font-family: "Audiowide", sans-serif;
+    margin: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+input{
+    padding: 0.5rem;
+}
+.nameLabelContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.dateTimeContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    font-size: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+legend{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    justify-items: center;
+    margin-bottom: 1rem;
+}
+#seatingPref{
+    font-size: 2rem;
+}
+.radioLabels{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+}
+.notesAndOptIn{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin-bottom: 2rem;
+}
+.submitResetButtons{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+button{
+    padding: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    font-size: 2rem;
+    font-family: "Audiowide", sans-serif;
 }
 .menuTagLine{
     font-family: "Mr Dafoe", serif;
