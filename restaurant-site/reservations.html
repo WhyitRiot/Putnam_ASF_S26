@@ -27,29 +27,40 @@
 
         If you would like to request a reservation please fill out the form below.
     </p>
-    <form>
+    <form autocomplete="off">
         <div class="nameLabelContainer">
-            <label>First Name: <input type="text"> </label>
-            <label>Last Name: <input type="text"> </label>
-            <label>Email: <input type="email"> </label>
+            <label>First Name: <input type="text" maxlength="20" required="true"> </label>
+            <label>Last Name: <input type="text" maxlength="20" required="true"> </label>
+            <label>Email: <input type="email" required="true"> </label>
         </div>
         <div class="dateTimeContainer">
-            <label>Party size: <input type="number"> </label>
-            <label>Date: <input type="date"> </label>
-            <label>Time: <input type="time"> </label>
+            <label>Party size: <!--<input type="number">--> 
+                <select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </label>
+            <label>Date: <input type="date" required="true"> </label>
+            <label>Time: <input type="time" required="true"> </label>
         </div>
         <fieldset>
             <legend>
                 <span id="seatingPref">Seating preference:</span><span>(If selecting spaceport, please specify which port in your notes so our waiting staff can find you.)</span>
             </legend>
             <div class="radioLabels">
-                <label>Indoor<input type="radio" value="Indoor"></label>
-                <label>Outdoor<input type="radio" value="Outdoor"></label>
-                <label>Spaceport<input type="radio" value="Spaceport"></label>
+                <label>Indoor<input type="radio" name="seating" value="Indoor" required></label>
+                <label>Outdoor<input type="radio" name="seating" value="Outdoor" required></label>
+                <label>Spaceport<input type="radio" name="seating" value="Spaceport" required></label>
             </div>
         </fieldset>
         <div class="notesAndOptIn">
-            <label>Notes: <input type="text"> </label>
+            <label>Notes: <input type="text" maxlength="30"> </label>
             <label>Newsletter opt-in:<input type="checkbox"></label>
         </div>
         <div class="submitResetButtons">
