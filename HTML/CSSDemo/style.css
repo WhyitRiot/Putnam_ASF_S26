@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    background-color: green;
+}
+div{
+    border: .3rem black dotted;
+    margin: .5rem;
+    justify-items: center;
+    align-content: center;
+}
+#burger{
+    background-color: blue;
+    flex: 1;
+}
+#onions{
+    background-color: red;
+    flex: 2;
+}
+#fries{
+    background-color: yellow;
+    flex: 1;
+}
+#fries, .yummy{
+    font-weight: bold;
+}
+.yummy{
+    font-size: 2rem;
+}

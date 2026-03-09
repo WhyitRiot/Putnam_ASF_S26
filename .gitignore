@@ -25,3 +25,6 @@ replay_pid*
 
 # Swap files #
 .swp
+
+#IntelliJ
+.DS_Store
