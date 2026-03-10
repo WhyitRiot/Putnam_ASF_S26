@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <h1>X-Men Roster Application</h1>
+    <form action="/cerebro">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="fname" id="first_name"/>
+        <label for="pw">Password</label>
+        <input type="password" name="password" id="pw" />
+        <br/><br/>
+        <label for="">Are you alive?
+            <input type="radio" name="isAlive" id="isAliveYes" value="yes">Yes
+            <input type="radio" name="isAlive" id="isAliveNo" value="no">No
+            <input type="radio" name="isAlive" id="isAliveZom" value="zombie">Zombie
+        </label>
+        <button type="submit">Join Team</button>
+    </form>
+    <script>
+        const rosterHeader = document.querySelector("h1");
+        rosterHeader.addEventListener("click", () =>{
+            console.log("You clicked the h1");
+            if (rosterHeader.textContent === "Avengers Assemble"){
+                rosterHeader.textContent="X-Men Roster Application";
+            }
+            else{
+                rosterHeader.textContent="Avengers Assemble";
+            }
+        })
+        const form = document.querySelector("form");
+        console.log(form);
+        form.addEventListener("submit", (event)=>{
+            event.preventDefault();
+            let firstName = document.getElementById("first_name");
+            let password = document.getElementById("pw");
+            let isAlive = document.querySelector('input[name="isAlive"]:checked');
+            console.log(isAlive);
+            if (firstName.value.length < 5){
+                console.log("Not long enough");
+            }
+            else{
+                console.log(`Ok, fine Mr. ${firstName.value}`);
+            }
+            console.log(`First name = ${firstName.value} Password = ${password.value} isAlive = ${(isAlive) ? isAlive.value : "nothing"}`)
+            let newData ={
+                fname: firstName.value,
+                password: password.value,
+                isAlive: (isAlive) ? isAlive.value : null
+            }
+            let stringData = JSON.stringify(newData);
+            console.log(stringData);
+            let newDataTwo = JSON.parse(stringData);
+            console.log(newDataTwo);
+            let fname = JSON.parse(stringData).fname;
+            console.log(fname);
+        })
+    </script>
+</body>
+</html>

@@ -1,12 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title>DOM - Demo 1</title>
 </head>
 <body>
+    <h1>Avengers</h1>
+    <h1>X-Men</h1>
+    <ul>
+        <li id="teamLeader">Wolverine</li>
+        <li class="mutant">Cyclops</li>
+        <li class="mutant">ShadowCat</li>
+    </ul>
+    <script>
+        let xmenleader = document.getElementById("teamLeader");
+        console.log(xmenleader);
+        let mutants = document.getElementsByClassName("mutant");
+        console.log(mutants);
+        /*for (var i =0; i < mutants.length; i++){
+            mutants[i].innerText = "Griminy"
+        } */
+        let allXmen = document.getElementsByTagName("li");
+        console.log(allXmen['teamLeader']);
+        let firstMutant = document.querySelector(".mutant");
+        console.log(firstMutant);
 
+        let allTeams = document.querySelectorAll("h1");
+        console.log(allTeams[0]);
+       /* for (var i = 0; i < allTeams.length; i++){
+            allTeams[i].style.color = "red";
+            allTeams[i].style.fontSize = "48px";
+            allTeams[i].style.border = "green 3px solid";
+        } */
+        allTeams[1].innerText = "New Mutants";
+        let teamContent = allTeams[0].innerHTML;
+        allTeams[1].innerHTML = "<b>Avengers</b>"
+
+
+    </script>
 </body>
-<script src="script.js"></script>
 </html>
