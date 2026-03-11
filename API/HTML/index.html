@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Random Dog</title>
+</head>
+<body style="display: inline-flex; flex-direction: column">
+    <h1>Welcome to the Dog Image Generator or something like that</h1>
+    <button onclick="refreshImage()">Click to get new dog!</button>
+    <img src="" alt="API NOT WORKING">
+ <script>
+     const randEndpoint = "https://dog.ceo/api/breeds/image/random";
+     const image = document.querySelector("img");
+     getDog(image);
+     function refreshImage(){
+         const image = document.querySelector("img");
+         getDog(image);
+     }
+     function setImage(image, src){
+         image.setAttribute("src", src);
+     }
+     async function getDog(image){
+         let dogFetch = await fetch(randEndpoint).catch(error =>console.log(error));
+         if (!dogFetch.ok){
+             throw new Error(`Response status: ${dogFetch.status}`);
+         }
+         const dog = await dogFetch.json();
+         setImage(image, dog.message)
+     }
+ </script>
+</body>
+
+</html>
