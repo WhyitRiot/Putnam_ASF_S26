@@ -8,6 +8,7 @@ body{
     flex-direction: column;
     align-items: center;
     color: #ffff;
+    background-color: black;
     background-image: url("./images/Black And White Loop GIF by Pi-Slices.gif");
     background-repeat: no-repeat;
     background-size: cover;
@@ -241,17 +242,13 @@ h1 {
 }
 a { color: inherit}
 .nav{
-    margin-Top: 1rem;
-    display: inline-block;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-self: center;
     font-family:"Audiowide", serif;
     color:#d2908e;
     font-size:70px;
     text-shadow:0px 0px 0 rgb(36,109,135),1px 1px 0 rgb(21,94,120),2px 2px 0 rgb(7,80,106),3px 3px 0 rgb(-8,65,91),4px 4px 0 rgb(-22,51,77),5px 5px 0 rgb(-37,36,62), 6px 6px 0 rgb(-51,22,48),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
 }
 .navItems{
+    justify-content: center;
     display: flex;
     gap: 10rem;
 
