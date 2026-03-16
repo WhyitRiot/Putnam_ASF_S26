@@ -28,3 +28,6 @@ replay_pid*
 
 #IntelliJ
 .DS_Store
+
+#node
+node_modules/
