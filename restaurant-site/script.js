@@ -105,7 +105,7 @@ function validateForm(event){
         }
         else
         if (!item[input].value || item[input].value === ""){
-            alert(`Please input your ${item[0].toLowerCase()}.`, "danger")
+            alert(`Please input your ${item[label].toLowerCase()}.`, "danger")
             return;
         }
         if (item[input].id === "firstNameInput" || item[input].id === "lastNameInput"){
