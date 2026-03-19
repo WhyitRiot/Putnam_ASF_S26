@@ -65,9 +65,18 @@
                 <tr>
                 <th class="text-center thead_custom"scope="col">Dish</th>
                 <th class="text-center thead_custom"scope="col">Description</th>
-                <th class="text-center thead_custom"scope="col">Price</th>/
-
+                <th class="text-center thead_custom"scope="col">Price</th>
                 <th class="text-center thead_custom"scope="col">Notes</th>
+                    <th class="text-center thead_custom" scope="col">
+                        <div class="dropdown" data-bs-theme="dark">
+                            <button class="btn btn-secondary dropdown-toggle bg-transparent border dropdown_thead_custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Category
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-scroll overflow-auto" id="dropdownList">
+                                <li><button class="dropdown-item" type="button" id="resetFilter">All Categories</button></li>
+                            </ul>
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody>

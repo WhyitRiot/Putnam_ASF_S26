@@ -48,13 +48,122 @@ const menuItems=[
     price: 4.99,
     notes: "Maybe check under your eye for a model number, can never be too careful.",
     category: "Noodles"
-  }
-]
+  },
+    {
+        id: 7,
+        name: "Nebula Nachos",
+        description: "Tri-layered chips infused with ionized cheese and dark matter beans. Slightly gravitational—may pull nearby snacks into orbit.",
+        price: 5.99,
+        notes: "Do not consume near loose silverware.",
+        category: "Appetizer"
+    },
+    {
+        id: 8,
+        name: "Andromeda Fried Rice",
+        description: "Classic fried rice with vegetables sourced from three separate galaxies and one suspicious asteroid colony.",
+        price: 6.49,
+        notes: "Contains trace amounts of stardust.",
+        category: "Entree"
+    },
+    {
+        id: 9,
+        name: "Quantum Quesadilla",
+        description: "Exists in both eaten and uneaten states until observed. Stuffed with cheese that may or may not be there.",
+        price: 4.49,
+        notes: "Refunds only issued if you prove it never existed.",
+        category: "Specialty"
+    },
+    {
+        id: 10,
+        name: "Pluto Platter",
+        description: "A small but emotionally significant sampler dish. Comes with sliders, fries, and a side of existential crisis.",
+        price: 3.99,
+        notes: "Still a planet in our hearts.",
+        category: "Combo"
+    },
+    {
+        id: 11,
+        name: "Wormhole Wings",
+        description: "Spicy chicken wings that teleport directly from fryer to plate. Occasionally arrive before you order them.",
+        price: 7.99,
+        notes: "If you receive two orders, please report temporal anomaly.",
+        category: "Appetizer"
+    },
+    {
+        id: 12,
+        name: "Dark Matter Milkshake",
+        description: "A thick, mysterious shake that absorbs light and possibly your soul. Chocolate flavor suspected.",
+        price: 4.99,
+        notes: "Straw may disappear mid-use.",
+        category: "Drink"
+    },
+    {
+        id: 13,
+        name: "Cosmic Carbonara",
+        description: "Pasta tossed in a creamy sauce harvested from free-range space comets and ethically sourced bacon.",
+        price: 8.99,
+        notes: "Warning: may cause mild time dilation after consumption.",
+        category: "Noodles"
+    },
+    {
+        id: 14,
+        name: "Alien Avocado Toast",
+        description: "Smashed avocado on multigrain asteroid bread, topped with seeds from a plant that blinked first.",
+        price: 6.99,
+        notes: "Trendier than it has any right to be.",
+        category: "Breakfast"
+    },
+    {
+        id: 15,
+        name: "Saturn Ring Calamari",
+        description: "Perfectly fried rings with a crisp that rivals Saturn itself. Served with a tangy nebula sauce.",
+        price: 7.49,
+        notes: "Rings not to scale.",
+        category: "Appetizer"
+    },
+    {
+        id: 16,
+        name: "Meteor Meatballs",
+        description: "Dense, fiery meatballs that crash into your plate with explosive flavor.",
+        price: 6.79,
+        notes: "Plate may still be hot from impact.",
+        category: "Entree"
+    },
+    {
+        id: 17,
+        name: "Galactic Gumbo",
+        description: "A rich stew combining flavors from across the universe—spicy, smoky, and slightly sentient.",
+        price: 7.99,
+        notes: "If it speaks to you, please do not respond.",
+        category: "Soup"
+    },
+    {
+        id: 18,
+        name: "Binary Star Burger",
+        description: "Two patties orbiting each other in perfect harmony, topped with twin cheeses and solar flare sauce.",
+        price: 9.49,
+        notes: "May collapse into a black hole if overcooked.",
+        category: "Entree"
+}
+];
 
 if (htmlTable != null){
-menuItems.forEach(item =>{
-    addRow(item.name, item.description, item.price, item.notes)
-});
+    renderMenuDefault();
+}
+
+document.getElementById("resetFilter").addEventListener("click", e =>{
+    deleteMenu();
+    renderMenuDefault();
+})
+
+function renderMenuDefault(){
+    renderMenu(menuItems)
+}
+
+function renderMenu(menu){
+    menu.forEach(item =>{
+        addRow(item.name, item.description, item.price, item.notes, item.category)
+    })
 }
 
 if (document.querySelector("form")){
@@ -155,7 +264,7 @@ function validateForm(event){
 
 
 function alert(message, type, time = null){
-    const container = document.getElementById("alertContainer");
+    const alertContainer = document.getElementById("alertContainer");
     const alert = document.createElement("div");
     alert.className = `alert alert-${type} alert-dismissible fade show`;
     alert.role="alert";
@@ -169,24 +278,59 @@ function alert(message, type, time = null){
     }
 }
 
-function addRow(dish, description, price, notes){
+function addRow(dish, description, price, notes, category){
+    let dropdownList = document.getElementById("dropdownList")
     let row = document.createElement("tr");
     let tdDish = document.createElement("td");
     let tdDesc = document.createElement("td");
     let tdPrice = document.createElement("td");
     let tdNotes = document.createElement("td");
+    let tdCategory = document.createElement("td");
+
+    let notExists = true;
+
+    if (dropdownList.children.length > 0){
+        for (let item of dropdownList.children){
+            if (item.children[0].getAttribute("value") === category){
+                notExists = false;
+            }
+        }
+    }
+    if (notExists){
+        let liCategory = document.createElement("li");
+        let btnCategory = document.createElement("button");
+        btnCategory.setAttribute("class", "dropdown-item");
+        btnCategory.setAttribute("type", "button");
+        btnCategory.setAttribute("value", `${category}`)
+        btnCategory.setAttribute("onclick", "filter(this)")
+        btnCategory.textContent=`${category}`;
+
+        liCategory.appendChild(btnCategory);
+        dropdownList.appendChild(liCategory)
+    }
 
     tdDish.textContent = dish;
     tdDesc.textContent = description;
     tdPrice.textContent = formatMoney(price);
     tdNotes.textContent = notes;
+    tdCategory.textContent = category;
 
     row.appendChild(tdDish);
     row.appendChild(tdDesc);
     row.appendChild(tdPrice);
     row.appendChild(tdNotes);
+    row.appendChild(tdCategory);
 
     htmlTable.appendChild(row);
+
+    //<li><button class="dropdown-item" type="button" value="Action">Action</button></li>
+}
+
+function deleteMenu(){
+    tableBody = document.querySelector("tbody").children;
+    for (let i = tableBody.length -1; i >= 0; i--){
+        tableBody[i].remove();
+    }
 }
 
 function formatMoney(item){
@@ -194,4 +338,11 @@ function formatMoney(item){
         style: "currency", currency: "USD"
     });
     return money.format(item);
+}
+
+function filter(btn){
+    deleteMenu();
+    renderMenu(menuItems.filter(item =>{
+        return item.category === btn.value;
+    }));
 }

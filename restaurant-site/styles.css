@@ -149,6 +149,14 @@ thead{
 .thead_custom{
       color: #d2908e !important;
 }
+.dropdown_thead_custom{
+    color: #d2908e !important;
+    font-family: "Atomic Age", system-ui;
+    font-size: 2.5rem;
+    text-shadow:0px 0px 0 rgb(36,109,135),1px 1px 0 rgb(21,94,120),2px 2px 0 rgb(7,80,106),3px 3px 0 rgb(-8,65,91),4px 4px 0 rgb(-22,51,77),5px 5px 0 rgb(-37,36,62), 6px 6px 0 rgb(-51,22,48),7px 7px 6px rgba(0,0,0,0),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+    text-align: center;
+
+}
 
 .heroBody{
     /*background-color: #221D1D;*/
@@ -266,5 +274,10 @@ h2{
 }
 .navFont{
     font-family: "Audiowide", sans-serif;
+}
+.dropdown-menu-scroll {
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin; /* Firefox */
 }
 
