@@ -48,40 +48,50 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="introWrapper">
-        <p>
-            You've been to Milliways, Mos Eisley, and maybe even Ten Forward on the Enterprise.
-            But let's be honest, you long for a trip back home to your favorite diner in rural nowhere.
-            Come on down to Gus's Galaxy Grill! We have that planetary soul food you're after plus a little extra.
-            Order the right item, and you may be in for a show! (And maybe a trip to the nearest medical station.)
-        </p>
-    </div>
-    <div class="tableWrapper">
-        <div class="tableHeaderWrapper">
-            <span class="tableTitle">Menu</span>
+    <div class="row justify-content-center">
+
+        <div class="col-8">
+            <div class="introWrapper">
+                <p>
+                    You've been to Milliways, Mos Eisley, and maybe even Ten Forward on the Enterprise.
+                    But let's be honest, you long for a trip back home to your favorite diner in rural nowhere.
+                    Come on down to Gus's Galaxy Grill! We have that planetary soul food you're after plus a little extra.
+                    Order the right item, and you may be in for a show! (And maybe a trip to the nearest medical station.)
+                </p>
+            </div>
         </div>
-        <table class="table table-dark table_custom">
-            <thead>
-                <tr>
-                <th class="text-center thead_custom"scope="col">Dish</th>
-                <th class="text-center thead_custom"scope="col">Description</th>
-                <th class="text-center thead_custom"scope="col">Price</th>
-                <th class="text-center thead_custom"scope="col">Notes</th>
-                    <th class="text-center thead_custom" scope="col">
-                        <div class="dropdown" data-bs-theme="dark">
-                            <button class="btn btn-secondary dropdown-toggle bg-transparent border dropdown_thead_custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Category
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-scroll overflow-auto" id="dropdownList">
-                                <li><button class="dropdown-item" type="button" id="resetFilter">All Categories</button></li>
-                            </ul>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="tableWrapper">
+                <div class="tableHeaderWrapper">
+                    <span class="tableTitle">Menu</span>
+                </div>
+                <table class="table table-dark table_custom">
+                    <thead>
+                        <tr>
+                        <th class="text-center thead_custom"scope="col">Dish</th>
+                        <th class="text-center thead_custom"scope="col">Description</th>
+                        <th class="text-center thead_custom"scope="col">Price</th>
+                        <th class="text-center thead_custom"scope="col">Notes</th>
+                            <th class="text-center thead_custom" scope="col">
+                                <div class="dropdown" data-bs-theme="dark">
+                                    <button class="btn btn-secondary dropdown-toggle bg-transparent border dropdown_thead_custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Category
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-scroll overflow-auto" id="dropdownList">
+                                        <li><button class="dropdown-item" type="button" id="resetFilter">All Categories</button></li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
