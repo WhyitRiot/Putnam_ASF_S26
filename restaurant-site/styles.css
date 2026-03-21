@@ -280,4 +280,9 @@ h2{
     overflow-y: auto;
     scrollbar-width: thin; /* Firefox */
 }
-
+.trHeader{
+    border-bottom: 2px solid currentColor;
+}
+.trBody{
+    border-bottom: 1px solid var(--bs-border-color) !important;
+}
