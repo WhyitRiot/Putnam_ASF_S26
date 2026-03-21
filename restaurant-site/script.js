@@ -350,7 +350,7 @@ function createCheckoutRow(table, id){
               <input type="number" id="quantity${id}" min="1" max="5" value="1">
             </div>
             <div class="col-auto d-inline-flex">
-              <button type="button" data-id="${id}" class="btn btn-primary fs-5">Add to Cart</button>
+              <button type="button" value="${id}" onclick="addToCart(this)" class="btn btn-primary fs-5">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -362,30 +362,6 @@ function createCheckoutRow(table, id){
   tr.appendChild(td);
   table.append(tr);
 }
-
-
-
-    /*
-<tr class="trBody"><td colspan="5">
-  <div class="fluid-container">
-    <div data-bs-theme="dark" class="row d-flex justify-content-end align-items-center">
-    <div class="col-4 d-inline-flex justify-content-end">
-    <div class="row align-items-center">
-    <div class="col-auto fs-4">
-        <label for="quantity1">Quantity</label>
-</div><div class="col-auto fs-4 mt-2 mb-2">
-       <input type="number" id="quantity1" min="1" max="5" value="1">
-
-      </div><div class="col-auto d-inline-flex">
-        <button type="button" value="1" class="btn btn-primary fs-5">Add to Cart</button>
-      </div></div>
-    </div>
-    </div>
-    
-  </div>
-
-</td></tr>
-    */
 
 function deleteMenu(){
     tableBody = document.querySelector("tbody").children;
@@ -406,4 +382,18 @@ function filter(btn){
     renderMenu(menuItems.filter(item =>{
         return item.category === btn.value;
     }));
+}
+
+function addToCart(btn){
+    let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+    let dishId = btn.value;
+    let qty = document.getElementById(`quantity${dishId}`);
+    cart.push({id: dishId, quantity: qty.value})
+    qty.value = 1;
+    console.log(qty.value, cart);
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function clearCart(){
+    sessionStorage.setItem("cart", JSON.stringify([]));
 }
