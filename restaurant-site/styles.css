@@ -286,3 +286,8 @@ h2{
 .trBody{
     border-bottom: 1px solid var(--bs-border-color) !important;
 }
+#navCart{
+    font-family: monospace;
+    width: 2ch;
+}
+

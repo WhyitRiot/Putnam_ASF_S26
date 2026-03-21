@@ -146,15 +146,25 @@ const menuItems=[
         category: "Entree"
 }
 ];
+updateCart();
+
+function updateCart(){
+    if (JSON.parse(sessionStorage.getItem("cart")).length > 0){
+    let cart = JSON.parse(sessionStorage.getItem("cart"))
+    document.getElementById("navCart").textContent = cart.length;
+}
+else{
+    document.getElementById("navCart").textContent = 0;
+}
+}
 
 if (htmlTable != null){
     renderMenuDefault();
-}
-
-document.getElementById("resetFilter").addEventListener("click", e =>{
+    document.getElementById("resetFilter").addEventListener("click", e =>{
     deleteMenu();
     renderMenuDefault();
 })
+}
 
 function renderMenuDefault(){
     renderMenu(menuItems)
@@ -263,13 +273,12 @@ function validateForm(event){
 }
 
 
-function alert(message, type, time = null){
-    const alertContainer = document.getElementById("alertContainer");
+function alert(message, type, time = null, container = document.getElementById("alertContainer"), button = true){
     const alert = document.createElement("div");
     alert.className = `alert alert-${type} alert-dismissible fade show`;
     alert.role="alert";
-    alert.innerHTML=`${message} <button type="button" class="btn-close" data-bs-dismiss="alert">`;
-    alertContainer.appendChild(alert);
+    alert.innerHTML= button ? `${message} <button type="button" class="btn-close" data-bs-dismiss="alert">` : `${message}`;
+    container.appendChild(alert);
 
     if (time){
         setTimeout(()=>{
@@ -385,15 +394,19 @@ function filter(btn){
 }
 
 function addToCart(btn){
+    alertContainer = document.getElementById("menuAlertContainer");
     let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
     let dishId = btn.value;
     let qty = document.getElementById(`quantity${dishId}`);
-    cart.push({id: dishId, quantity: qty.value})
+    let num = cart.length +1;
+    cart.push({itemNum: num, id: dishId, quantity: qty.value})
     qty.value = 1;
-    console.log(qty.value, cart);
     sessionStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+    alert(`${qty.value} of ${menuItems[dishId].name} added to card!`, "success", 2000, alertContainer, false);
 }
 
 function clearCart(){
     sessionStorage.setItem("cart", JSON.stringify([]));
+    updateCart();
 }
