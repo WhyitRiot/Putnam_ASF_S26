@@ -302,13 +302,17 @@ function deleteCart(){
 }
 
 function updateCart(){
+    if (JSON.parse(sessionStorage.getItem("cart") == null)){
+            document.getElementById("navCart").textContent = 0;
+            return
+    }
     if (JSON.parse(sessionStorage.getItem("cart")).length > 0){
     let cart = JSON.parse(sessionStorage.getItem("cart"))
     document.getElementById("navCart").textContent = cart.length;
-}
-else{
-    document.getElementById("navCart").textContent = 0;
-}
+    }
+    else{
+                    document.getElementById("navCart").textContent = 0;
+    }
 }
 
 if (document.URL.includes("menu.html")){
