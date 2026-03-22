@@ -1,5 +1,3 @@
-let htmlTable = document.querySelector("tbody")
-
 const menuItems=[
     {
     id: 1,
@@ -148,6 +146,161 @@ const menuItems=[
 ];
 updateCart();
 
+if (document.URL.includes("cart.html")){
+    renderCart();
+}
+
+function renderCart(){
+        let cartHeader = document.getElementById("cartHeader");
+        let cart = JSON.parse(sessionStorage.getItem("cart"));
+    if (cart.length > 0){
+        let cartTable = document.getElementById("cartTable");
+        let total = 0;
+        let totalPlusTax = 0;
+        for (var i of cart){
+            total += menuItems[i.id - 1].price * i.quantity;
+            totalPlusTax += total * 1.08;
+        }
+        cartHeaderDiv = document.createElement("div");
+        cartHeaderDiv.setAttribute("class", "row justify-content-center");
+        cartHeaderDiv.setAttribute("id", "cartHeaderDivTarget");
+        cartHeaderDiv.innerHTML = `
+        <div class="cart-summary-bar bg-dark text-white rounded">
+                    <div class="row justify-content-center">
+                    <div class="col-2 d-flex justify-content-center">
+                        <span>Subtotal: ${formatMoney(total)}</span>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        <span>Tax: (8%) ${formatMoney(total * 1.08)}</span>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        <span>Total: ${formatMoney(totalPlusTax)}</span>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        <div class="row justify-content-center">
+                            <div class="col-auto d-flex justify-content-center mt-2 mb-2 gap-2">
+                                <button class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdropClear">Cancel Order</button>
+                                <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdropCheckout">Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        `
+        cartHeader.appendChild(cartHeaderDiv);
+        row = document.createElement("div");
+        row.setAttribute("class", "row");
+        row.setAttribute("id", "cartTableTarget")
+        row.innerHTML =
+        `      
+                        <div class="row mt-5 pt-5 justify-content-center">
+            <div class="col-8">
+                <table class="table table-borderless table-dark">
+                    <thead>
+                        <tr class="trHeader">
+                            <th class="text-center thead_custom"scope="col">#</th>
+                            <th class="text-center thead_custom"scope="col">Dish</th>
+                            <th class="text-center thead_custom"scope="col">Price</th>
+                            <th class="text-center thead_custom"scope="col">Quantity</th>
+                            <th class="text-center" colspan="2"></th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                        </tbody>
+                </table>
+            </div>
+        `
+        cartTable.appendChild(row);
+        table = document.querySelector("tbody");
+        cart.forEach(item =>{
+            populateCartTable(item, table)
+        });
+    }
+    else{
+        row = document.createElement("div");
+        row.setAttribute("class", "row d-flex justify-content-center");
+        row.innerHTML= `
+                    <div class="col-8 d-flex flex-column justify-content-center align-items-center fs-1" data-bs-theme="dark">
+                        <div class="row mt-5">
+                              <span>Your cart is empty!</span>
+                        </div>
+                        <div class="row">
+                            <img src="./images/empty-cart.gif" alt="This is not the photo you're looking for.">
+                        </div>
+                    </div>
+        `
+        cartHeader.appendChild(row);
+    }
+}
+
+function populateCartTable(item, table){
+    let row = document.createElement("tr");
+    row.setAttribute("class", "text-center")
+    let tdNum = document.createElement("td");
+    let tdDish = document.createElement("td");
+    let tdPrice = document.createElement("td");
+    let tdQty = document.createElement("td");
+    let tdBtn = document.createElement("td");
+    let emtyTd = document.createElement("td");
+    emtyTd.setAttribute("colspan", "2");
+
+    let subTotalRow = document.createElement("tr");
+    subTotalRow.setAttribute("class", "trBody")
+    subTotalRow.innerHTML = `<td colspan="2"><td/>
+    <td class="fs-5" colspan="2">Item Total: ${formatMoney(item.quantity * menuItems[item.id -1].price)}</td>
+    `
+
+
+    //Remove item btn
+    let btn = document.createElement("button");
+    btn.setAttribute("class", "btn btn-secondary")
+    btn.textContent = "Remove from Cart"
+    btn.setAttribute("value", `${item.itemNum}`)
+    btn.setAttribute("onclick", "removeItemFromCart(this)");
+    tdBtn.appendChild(btn);
+    tdBtn.setAttribute("class", "center-block")
+    subTotalRow.appendChild(tdBtn);
+
+    tdNum.textContent = item.itemNum;
+    tdDish.textContent = menuItems[item.id - 1].name;
+    tdPrice.textContent = formatMoney(menuItems[item.id -1].price);
+    tdQty.textContent = item.quantity;
+    row.appendChild(tdNum);
+    row.appendChild(tdDish);
+    row.appendChild(tdPrice);
+    row.appendChild(tdQty);
+    row.appendChild(emtyTd);
+    table.appendChild(row);
+    table.appendChild(subTotalRow);
+}
+
+function removeItemFromCart(btn){
+    let cart = JSON.parse(sessionStorage.getItem("cart"));
+    let removed = false;
+    let length = cart.length;
+    for (i = 0; i < length; i++){
+        if (cart[i].itemNum == btn.value && removed === false){
+            cart.splice(i, 1);
+            length -= 1;
+            removed = true;
+        }
+        if (removed && cart[i]){
+            cart[i].itemNum -= 1;
+        }
+    }
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+    updateCart();
+    deleteCart();
+    renderCart();
+}
+
+function deleteCart(){
+    headerElement = document.getElementById("cartHeaderDivTarget");
+    element = document.getElementById("cartTableTarget");
+    element.remove();
+    headerElement.remove();
+}
+
 function updateCart(){
     if (JSON.parse(sessionStorage.getItem("cart")).length > 0){
     let cart = JSON.parse(sessionStorage.getItem("cart"))
@@ -158,11 +311,12 @@ else{
 }
 }
 
-if (htmlTable != null){
+if (document.URL.includes("menu.html")){
     renderMenuDefault();
     document.getElementById("resetFilter").addEventListener("click", e =>{
     deleteMenu();
     renderMenuDefault();
+    document.getElementById("categoryBtn").textContent = "Categories"
 })
 }
 
@@ -187,7 +341,6 @@ function validateForm(event){
     if (alerts.length > 0){
         for (var alertElement of alerts){
             alertElement.remove();
-            console.log("remove")
         }
     }
 
@@ -288,6 +441,7 @@ function alert(message, type, time = null, container = document.getElementById("
 }
 
 function addRow(id, dish, description, price, notes, category){
+    let htmlTable = document.getElementById("tbodyMenu");
     let dropdownList = document.getElementById("dropdownList")
     let row = document.createElement("tr");
     let tdDish = document.createElement("td");
@@ -381,7 +535,9 @@ function deleteMenu(){
 
 function formatMoney(item){
     const money = new Intl.NumberFormat("en-US", {
-        style: "currency", currency: "USD"
+        style: "currency", currency: "USD",
+        minimumFractionDigits:0,
+        maximumFractionDigits:2
     });
     return money.format(item);
 }
@@ -391,6 +547,8 @@ function filter(btn){
     renderMenu(menuItems.filter(item =>{
         return item.category === btn.value;
     }));
+    categoryBtn = document.getElementById("categoryBtn")
+    categoryBtn.textContent = btn.value;
 }
 
 function addToCart(btn){
@@ -398,12 +556,44 @@ function addToCart(btn){
     let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
     let dishId = btn.value;
     let qty = document.getElementById(`quantity${dishId}`);
+    if (qty.value == 0){
+        alert(`You can't order nothin! Must be somethin!`, "warning", 5000, alertContainer, false);
+        qty.value = 1;
+        return;
+    }
+    if (qty.value < 0){
+        alert(`Anti-matter is not served at this location. Sorry!`, "warning", 5000, alertContainer, false);
+        qty.value = 1;
+        return
+    }
     let num = cart.length +1;
     cart.push({itemNum: num, id: dishId, quantity: qty.value})
     qty.value = 1;
     sessionStorage.setItem("cart", JSON.stringify(cart));
     updateCart();
-    alert(`${qty.value} of ${menuItems[dishId].name} added to card!`, "success", 2000, alertContainer, false);
+    alert(`${qty.value} of ${menuItems[dishId].name} added to card!`, "success", 5000, alertContainer, false);
+}
+
+function clearCartSuccess(){
+    const confirmModal = document.querySelector('#staticBackdropOrderConfirm');
+    const confirmShowModal = new bootstrap.Modal(confirmModal);
+    clearCart();
+    deleteCart();
+    renderCart();
+    confirmShowModal.show();
+}
+
+function clearCartModal(){
+    const confirmModal = document.querySelector('#staticBackdropClearConfirm');
+    const confirmShowModal = new bootstrap.Modal(confirmModal);
+    clearCart();
+    deleteCart();
+    renderCart();
+    confirmShowModal.show();
+}
+
+function navToMenu(){
+        window.location.href = "menu.html";
 }
 
 function clearCart(){
