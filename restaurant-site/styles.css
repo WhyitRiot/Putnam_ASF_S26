@@ -128,8 +128,6 @@ button{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    margin-left: 2rem;
-    margin-right: 2rem;
 }
 .table_custom{
     --bs-table-bg: transparent !important;
