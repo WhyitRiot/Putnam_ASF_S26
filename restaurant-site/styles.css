@@ -19,6 +19,8 @@ p {
     margin: 2rem;
 }
 span{
+    font-family: "Audiowide", sans-serif;
+    font-size: 2rem;
     align-content: center;
 }
 form{
@@ -289,5 +291,8 @@ h2{
 #navCart{
     font-family: monospace;
     width: 2ch;
+}
+.cart-summary-bar {
+  position: fixed;
 }
 

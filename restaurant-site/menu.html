@@ -28,9 +28,9 @@
                     <li class="nav-item">
                         <div class="row">
                             <div class="col-auto">
-                                <a href="" class="nav-link rounded border">
+                                <a href="cart.html" class="nav-link rounded border">
                                     <i class="fa-solid fa-cart-arrow-down"></i>
-                                    <span id="navCart">3</span>
+                                    <span id="navCart">0</span>
                                 </a>
                             </div>
                         </div>
@@ -74,12 +74,11 @@
                 </p>
             </div>
         </div>
-        
     </div>
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="tableWrapper">
-                <div class="tableHeaderWrapper">
+                <div class="container-fluid tableHeaderWrapper">
                     <span class="tableTitle">Menu</span>
                 </div>
                 <table class="table table-borderless table-dark table_custom">
@@ -91,9 +90,8 @@
                         <th class="text-center thead_custom"scope="col">Notes</th>
                             <th class="text-center thead_custom" scope="col">
                                 <div class="dropdown" data-bs-theme="dark">
-                                    <button class="btn btn-secondary dropdown-toggle bg-transparent border dropdown_thead_custom" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Category
-                                    </button>
+                                    <button class="btn btn-secondary dropdown-toggle bg-transparent border dropdown_thead_custom" id="categoryBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categories</button>
                                     <ul class="dropdown-menu dropdown-menu-scroll overflow-auto" id="dropdownList">
                                         <li><button class="dropdown-item" type="button" id="resetFilter">All Categories</button></li>
                                     </ul>
@@ -101,7 +99,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbodyMenu">
                     </tbody>
                 </table>
             </div>
