@@ -159,8 +159,8 @@ function renderCart(){
         let totalPlusTax = 0;
         for (var i of cart){
             total += menuItems[i.id - 1].price * i.quantity;
-            totalPlusTax += total * 1.08;
         }
+        totalPlusTax = total * 1.08;
         cartHeaderDiv = document.createElement("div");
         cartHeaderDiv.setAttribute("class", "row justify-content-center");
         cartHeaderDiv.setAttribute("id", "cartHeaderDivTarget");
@@ -171,7 +171,7 @@ function renderCart(){
                         <span>Subtotal: ${formatMoney(total)}</span>
                     </div>
                     <div class="col-2 d-flex justify-content-center">
-                        <span>Tax: (8%) ${formatMoney(total * 1.08)}</span>
+                        <span>Tax: (8%) ${formatMoney(total * 0.08)}</span>
                     </div>
                     <div class="col-2 d-flex justify-content-center">
                         <span>Total: ${formatMoney(totalPlusTax)}</span>
@@ -575,7 +575,7 @@ function addToCart(btn){
     qty.value = 1;
     sessionStorage.setItem("cart", JSON.stringify(cart));
     updateCart();
-    alert(`${qty.value} of ${menuItems[dishId].name} added to card!`, "success", 5000, alertContainer, false);
+    alert(`${qty.value} of ${menuItems[dishId].name} added to cart!`, "success", 5000, alertContainer, false);
 }
 
 function clearCartSuccess(){
