@@ -5,6 +5,6 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App name={"Wyatt"} title={"The Reactonator"}/>
+    <App />
   </StrictMode>,
 )
