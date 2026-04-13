@@ -2,7 +2,7 @@ import React from 'react';
 
 const Reservations = () => {
     return (
-        <div>
+        <div className={"bg-default min-h-screen w-full bg-cover bg-center bg-no-repeat"}>
             
         </div>
     );
