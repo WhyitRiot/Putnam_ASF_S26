@@ -32,18 +32,20 @@ const NavBar = () => {
                     </button>
                     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-                            <li>
+                            <li className={"p-1 border rounded-sm"}>
                                 <Link className={"block py-2 px-3 text-white bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"} aria-current={"page"} to="/">Home</Link>
                             </li>
-                            <li>
+                            <li className={"p-1 border rounded-sm"}>
                                 <Link className={"block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"} to="/menu">Menu</Link>
                             </li>
-                            <li>
+                            <li className={"p-1 border rounded-sm"}>
                                 <Link className={"block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"} to="/reservations">Reservations</Link>
                             </li>
-                            <li>
-                                <Link className={"block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"} to="/cart">Cart</Link>
-                                {cartData.length}
+                            <li className={"p-1 border rounded-sm"}>
+                                <Link className={"inline-flex flex-row gap-2 py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"} to="/cart">
+                                    <div>Cart</div>
+                                    <div>{cartData.length}</div>
+                                </Link>
                             </li>
                         </ul>
                     </div>
