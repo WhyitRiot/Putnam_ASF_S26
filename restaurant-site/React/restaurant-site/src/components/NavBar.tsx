@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Menu from "../pages/Menu.tsx";
 import Reservations from "../pages/Reservations.tsx";
 import Cart from "../pages/Cart.tsx"
 import {BrowserRouter, Link, Route, Routes} from "react-router";
 import Hero from "../pages/Hero.tsx";
 import logo from "../assets/Gus_Galaxy_Grill_logo2.png"
+import {SiteContext} from "../context/SiteContext.tsx";
 
 const NavBar = () => {
+    const context = useContext(SiteContext);
+    if (!context){
+        throw Error("outside of provider!");
+    }
+    const {cartData} = context;
     return (
         <>
             <nav data-theme={"dark"}>
@@ -37,6 +43,7 @@ const NavBar = () => {
                             </li>
                             <li>
                                 <Link className={"block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"} to="/cart">Cart</Link>
+                                {cartData.length}
                             </li>
                         </ul>
                     </div>

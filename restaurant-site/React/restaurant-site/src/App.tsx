@@ -5,19 +5,22 @@ import {Route, Routes} from "react-router";
 import Reservations from "./pages/Reservations.tsx";
 import Menu from "./pages/Menu.tsx";
 import Hero from "./pages/Hero.tsx";
+import {SiteContextProvider} from "./context/SiteContext.tsx";
 
 function App() {
 
 
   return (
     <>
-      <NavBar/>
-      <Routes>
-        <Route path="/" element={<Hero/>}/>
-        <Route path="/menu" element={<Menu/>}></Route>
-        <Route path="/reservations" element={<Reservations/>}></Route>
-        <Route path={"/cart"} element={<Cart/>}></Route>
-      </Routes>
+        <SiteContextProvider>
+            <NavBar/>
+            <Routes>
+                <Route path="/" element={<Hero/>}/>
+                <Route path="/menu" element={<Menu/>}></Route>
+                <Route path="/reservations" element={<Reservations/>}></Route>
+                <Route path={"/cart"} element={<Cart/>}></Route>
+            </Routes>
+        </SiteContextProvider>
     </>
   //filter: drop-shadow(5px 5px 10px rgb(247, 245, 243))
 
