@@ -9,7 +9,7 @@ body{
     align-items: center;
     color: #ffff;
     background-color: black;
-    background-image: url("./images/Black And White Loop GIF by Pi-Slices.gif");
+    background-image: url("React/restaurant-site/src/assets/Black And White Loop GIF by Pi-Slices.gif");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -160,7 +160,7 @@ thead{
 
 .heroBody{
     /*background-color: #221D1D;*/
-    background-image: url("./images/Black And White Loop GIF by Pi-Slices.gif");
+    background-image: url("React/restaurant-site/src/assets/Black And White Loop GIF by Pi-Slices.gif");
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
