@@ -4,6 +4,8 @@ import {SiteContext} from "../context/SiteContext.tsx";
 import CartItem from "../components/CartItem.tsx";
 import {moneyFormat} from "../utilities/format.ts";
 import emptyCart from "../assets/empty-cart.gif"
+import gusLogo from "../assets/Gus_Galaxy_Grill_logo2.png"
+
 const Cart = () => {
     const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
     const [isCancelOpen, setIsCancelOpen] = useState(false);
@@ -27,14 +29,28 @@ const Cart = () => {
     return (
         <div className={"bg-default min-h-screen w-full bg-cover bg-center bg-no-repeat"}>
             <Dialog open={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} className="relative z-50">
-                <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-                    <DialogPanel className="max-w-lg space-y-4 border bg-white p-12">
-                        <DialogTitle className="font-bold">Deactivate account</DialogTitle>
-                        <Description>This will permanently deactivate your account</Description>
-                        <p>Are you sure you want to deactivate your account? All of your data will be permanently removed.</p>
+                <div className="fixed inset-0 flex bg-black/50 w-screen items-center justify-center p-4">
+                    <DialogPanel className="max-w-lg space-y-4 border-white drop-shadow-special bg-gray-300 p-12 text-black rounded-2xl">
+                        <DialogTitle className="flex flex-col items-center font-bold text-red-500 text-shadow-from font-atomic text-5xl">Checkout <img src={gusLogo} alt="Gus's Grill!"/></DialogTitle>
+                        <Description className={"font-dafoe text-3xl text-center"}>Ready to checkout?</Description>
+                        <p className={"font-audiowide"}>Checkout with {cartData.length} items totalling {moneyFormat.format(total)}</p>
                         <div className="flex gap-4">
-                            <button onClick={() => setIsCheckoutOpen(false)}>Cancel</button>
-                            <button onClick={() => setIsCheckoutOpen(false)}>Deactivate</button>
+                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-red-400 via-red-600 to-red-700 hover:to-red-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setIsCheckoutOpen(false)}>Cancel</button>
+                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setIsCheckoutOpen(false)}>Checkout</button>
+                        </div>
+                    </DialogPanel>
+                </div>
+            </Dialog>
+
+            <Dialog open={isCancelOpen} onClose={() => setIsCancelOpen(false)} className="relative z-50">
+                <div className="fixed inset-0 flex bg-black/50 w-screen items-center justify-center p-4">
+                    <DialogPanel className="max-w-lg space-y-4 border-white drop-shadow-special bg-gray-300 p-12 text-black rounded-2xl">
+                        <DialogTitle className="flex flex-col items-center font-bold text-red-500 text-shadow-from font-atomic text-5xl">Cancel Order <img src={gusLogo} alt="Gus's Grill!"/></DialogTitle>
+                        <Description className={"font-dafoe text-3xl text-center"}>Cancel your Order?</Description>
+                        <p className={"font-audiowide"}>Cancel order with {cartData.length} items totalling {moneyFormat.format(total)}</p>
+                        <div className="flex gap-4">
+                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-red-400 via-red-600 to-red-700 hover:to-red-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setIsCancelOpen(false)}>Yes, Cancel</button>
+                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setIsCancelOpen(false)}>Go Back!</button>
                         </div>
                     </DialogPanel>
                 </div>
@@ -42,13 +58,20 @@ const Cart = () => {
         <>
             {cartData.length > 0 ?
 
-            <div className={"flex justify-center"}>
+            <div className={"flex flex-col items-center justify-center"}>
+                <div className="flex flex-col justify-center gap-10 mt-20 mb-20">
+                    <div className={"flex flex-row"}>
+                        <h2 className={"font-dafoe -rotate-7 text-shadow-special text-yellow-300 drop-shadow-special flex flex-row justify-between items-center text-6xl gap-10"}>
+                            Thanks for dining with us!
+                        </h2>
+                    </div>
+                </div>
                 <div className="grid gap-1">
 
                     {/* CART */}
-                    <div className="w-[400px] bg-white shadow-[0_187px_75px_rgba(0,0,0,0.01),0_105px_63px_rgba(0,0,0,0.05),0_47px_47px_rgba(0,0,0,0.09),0_12px_26px_rgba(0,0,0,0.1)] rounded-[19px_19px_7px_7px]">
+                    <div className="w-lg bg-gray-300/50 shadow-[0_187px_75px_rgba(0,0,0,0.01),0_105px_63px_rgba(0,0,0,0.05),0_47px_47px_rgba(0,0,0,0.09),0_12px_26px_rgba(0,0,0,0.1)] rounded-[19px_19px_7px_7px]">
 
-                        <div className="h-10 flex items-center px-5 border-b border-gray-200 text-[11px] font-bold text-gray-500">
+                        <div className="h-10 flex items-center px-5 border-b border-gray-200 text-[11px] font-bold text-white">
                             Your cart
                         </div>
 
@@ -64,26 +87,26 @@ const Cart = () => {
                     </div>
 
                     {/* CHECKOUT */}
-                    <div className="w-[400px] bg-white shadow-[0_187px_75px_rgba(0,0,0,0.01),0_105px_63px_rgba(0,0,0,0.05)] rounded-[9px_9px_19px_19px]">
+                    <div className="w-lg bg-gray-300/50 shadow-[0_187px_75px_rgba(0,0,0,0.01),0_105px_63px_rgba(0,0,0,0.05)] rounded-[9px_9px_19px_19px]">
 
-                        <div className="h-10 flex items-center px-5 border-b text-[11px] font-bold text-gray-500">
+                        <div className="h-10 flex items-center px-5 border-b text-[11px] font-bold text-white">
                             Checkout
                         </div>
 
                         <div className="grid grid-cols-[3fr_1fr] gap-2 p-2 text-[13px]">
-                            <span className="text-[11px] font-bold text-gray-500">Subtotal</span>
-                            <span className={"text-black"}>{moneyFormat.format(subtotal)}</span>
+                            <span className="text-[11px] font-bold text-gray-200">Subtotal</span>
+                            <span className={"text-white"}>{moneyFormat.format(subtotal)}</span>
 
-                            <span className="text-[11px] font-bold text-gray-500">Tax</span>
-                            <span className={"text-black"}>{moneyFormat.format(subtotal * tax)}</span>
+                            <span className="text-[11px] font-bold text-gray-200">Tax</span>
+                            <span className={"text-white"}>{moneyFormat.format(subtotal * tax)}</span>
                         </div>
 
-                        <div className="flex flex-1 items-center justify-between p-3 gap-4 bg-gray-100 rounded-b-[19px]">
-                            <div className="text-[22px] font-black text-[#2B2B2F]">
+                        <div className="flex flex-1 items-center justify-between p-3 gap-4 bg-gray-300/50 rounded-b-[19px]">
+                            <div className="text-[22px] font-black text-black drop-shadow-special">
                                 {moneyFormat.format(total)}
                             </div>
                             <div className={"flex flex-3 gap-2 h-9"}>
-                                <button className={"flex-1 bg-gradient-to-b from-red-400 via-red-600 to-red-700 hover:to-red-600 hover:cursor-pointer text-white font-semibold rounded-md"}>
+                                <button onClick={openCancel} className={"flex-1 bg-gradient-to-b from-red-400 via-red-600 to-red-700 hover:to-red-600 hover:cursor-pointer text-white font-semibold rounded-md"}>
                                     Cancel
                                 </button>
                                 <button onClick={openCheckout} className="flex-1 bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md">
