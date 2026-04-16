@@ -12,7 +12,6 @@ const Reservations = () => {
                             <h2 className={"font-dafoe -rotate-7 text-shadow-special text-yellow-300 drop-shadow-special flex flex-row justify-between items-center text-4xl lg:text-6xl gap-10"}>
                                 Reserve your Seat!
                             </h2>
-
                         </div>
                     </div>
                 </div>
