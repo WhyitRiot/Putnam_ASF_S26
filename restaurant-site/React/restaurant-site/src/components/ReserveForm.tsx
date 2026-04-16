@@ -153,13 +153,13 @@ const ReserveForm = () => {
                     <img src={gusGalaxyLogo} alt="Gus Galaxy!" className={"h-20 md:h-24 object-cover"}/>
                 </div>
                 <div className={"[grid-area:reset] flex p-2 items-center"}>
-                    <button type={"reset"} className="grow h-14 bg-red-950 text-red-400 border border-red-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-xl hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+                    <button type={"reset"} className="hover:cursor-pointer grow h-14 bg-red-950 text-red-400 border border-red-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-xl hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
                         <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]" />
                         Reset
                     </button>
                 </div>
                 <div className={"[grid-area:submit] flex p-2 items-center"}>
-                    <button type={"submit"} className="bg-white/50 hover:bg-white text-center w-full rounded-2xl h-14 relative text-black text-xl font-semibold group transition-all duration-500">
+                    <button type={"submit"} className="hover:cursor-pointer bg-white/50 hover:bg-white text-center w-full rounded-2xl h-14 relative text-black text-xl font-semibold group transition-all duration-500">
                         <div className="bg-green-900 hover:bg-green-500 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-98/100 z-10 duration-500">
                             <svg className={"rotate-180"} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="25px" width="25px">
                                 <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z" fill="#000000" />

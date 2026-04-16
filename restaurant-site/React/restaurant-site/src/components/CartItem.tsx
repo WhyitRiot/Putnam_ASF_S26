@@ -2,7 +2,6 @@ import type {CartData} from "../utilities/cart_data_type.ts";
 import {moneyFormat} from "../utilities/format.ts";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faX} from "@fortawesome/free-solid-svg-icons";
-import cart from "../pages/Cart.tsx";
 
 const CartItem = ({cartData, setCartData} :{cartData : CartData, setCartData : React.Dispatch<React.SetStateAction<CartData[]>>}) => {
 
@@ -32,10 +31,10 @@ const CartItem = ({cartData, setCartData} :{cartData : CartData, setCartData : R
 
             {/* text */}
             <div>
-              <span className="block text-[13px] font-semibold text-[#47484b] mb-2">
+              <span className="block text-[13px] font-semibold text-white mb-2">
                 {cartData.item.name}
               </span>
-                <p className="text-[11px] font-semibold text-[#7a7c81]">
+                <p className="text-[11px] font-semibold text-gray-200">
                     {moneyFormat.format(cartData.item.price)} x {cartData.quantity}
                 </p>
             </div>
@@ -43,24 +42,24 @@ const CartItem = ({cartData, setCartData} :{cartData : CartData, setCartData : R
             {/* quantity */}
             <div className="grid grid-cols-3 items-center justify-center h-[30px] border border-gray-200 rounded-[7px] shadow-[0_1px_0_#efefef,0_1px_0.5px_rgba(239,239,239,0.5)]">
 
-                <button onClick={handleDecrement} className="flex items-center justify-center text-black hover:cursor-pointer">
+                <button onClick={handleDecrement} className="flex items-center justify-center text-white hover:cursor-pointer">
                     -
                 </button>
 
-                <span className="text-[15px] font-bold text-[#47484b] flex items-center justify-center">
+                <span className="text-[15px] font-bold text-gray-200 flex items-center justify-center">
                 {cartData.quantity}
               </span>
 
-                <button onClick={handleIncrement} className="flex items-center justify-center text-black hover:cursor-pointer">
+                <button onClick={handleIncrement} className="flex items-center justify-center text-white hover:cursor-pointer">
                     +
                 </button>
             </div>
 
             {/* price */}
-            <div className="text-[15px] font-semibold text-[#47484b]">
+            <div className="text-[15px] font-semibold text-white">
                 {moneyFormat.format(cartData.item.price * cartData.quantity)}
             </div>
-            <button onClick={onRemove} className={"text-red-600 hover:bg-gray-100 hover:cursor-pointer border rounded-2xl"}>
+            <button onClick={onRemove} className={"text-white hover:text-red-600 text-bold hover:bg-gray-100 hover:cursor-pointer border-white hover:border-gray-400 border-2 rounded-2xl"}>
                 <FontAwesomeIcon icon={faX} />
             </button>
         </div>
