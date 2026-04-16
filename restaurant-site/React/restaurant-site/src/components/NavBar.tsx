@@ -1,9 +1,5 @@
-import React, {useContext} from 'react';
-import Menu from "../pages/Menu.tsx";
-import Reservations from "../pages/Reservations.tsx";
-import Cart from "../pages/Cart.tsx"
-import {BrowserRouter, Link, Route, Routes} from "react-router";
-import Hero from "../pages/Hero.tsx";
+import {useContext} from 'react';
+import {Link} from "react-router";
 import logo from "../assets/Gus_Galaxy_Grill_logo2.png"
 import {SiteContext} from "../context/SiteContext.tsx";
 
