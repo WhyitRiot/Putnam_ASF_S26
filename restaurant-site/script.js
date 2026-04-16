@@ -225,7 +225,7 @@ function renderCart(){
                               <span>Your cart is empty!</span>
                         </div>
                         <div class="row">
-                            <img src="./images/empty-cart.gif" alt="This is not the photo you're looking for.">
+                            <img src="React/restaurant-site/src/assets/empty-cart.gif" alt="This is not the photo you're looking for.">
                         </div>
                     </div>
         `
