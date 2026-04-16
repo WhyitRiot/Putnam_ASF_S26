@@ -1,18 +1,18 @@
 import {type ChangeEvent, useContext} from 'react';
-import type {CartData} from "../utilities/cart_data_type.ts";
 import * as yup from 'yup';
 import {type InferType} from 'yup';
 import {yupResolver} from "@hookform/resolvers/yup";
 import {type MenuItem} from "../utilities/menu_type.ts"
 import {type FieldValues, useForm} from "react-hook-form";
 import {SiteContext} from "../context/SiteContext.tsx";
+import {moneyFormat} from "../utilities/format.ts";
 
 const MenuCard = ({item} : {item: MenuItem}) => {
     const context = useContext(SiteContext);
     if (!context){
         throw Error("outside of provider!")
     }
-    const {cartData, setCartData} = context;
+    const {setCartData} = context;
     const quantityInput = "quantity";
     const schema = yup.object().shape({
         quantity: yup.number().min(1).max(5).positive().required()
@@ -20,7 +20,7 @@ const MenuCard = ({item} : {item: MenuItem}) => {
 
     type formData = InferType<typeof schema>;
 
-    const {register, handleSubmit, getValues, watch, setValue, reset, formState: {errors}} = useForm({
+    const {register, handleSubmit, getValues, watch, setValue, reset} = useForm({
         resolver: yupResolver(schema),
         defaultValues: {
             quantity: 1
@@ -41,7 +41,7 @@ const MenuCard = ({item} : {item: MenuItem}) => {
         console.log("change")
         const numVal = parseInt(value);
         if (!isNaN(numVal)){
-            setValue(name as keyof formData, value as any, {
+            setValue(name as keyof formData, value as never, {
                 shouldValidate: true,
                 shouldDirty: true
             })
@@ -73,13 +73,15 @@ const MenuCard = ({item} : {item: MenuItem}) => {
                  backgroundSize: 'cover',
                  backgroundPosition: 'top center',
              }}>
-            {/*<img src={item.photo} alt={item.name} className={"h-100 w-90 object-cover"}/>*/}
-            <div className={"flex flex-col h-1/3 hover:h-2/3 transition-all duration-300 bg-linear-to-t from-black to-black/70 rounded-b-[inherit]"}>
-                <div className={"flex flex-row justify-center"}>
+
+            <div className={"flex flex-col h-1/3 hover:h-2/3 active:h-2/3 transition-all duration-300 bg-linear-to-t from-black to-black/70 rounded-b-[inherit]"}>
+                <div className={"flex flex-col items-center justify-center"}>
                     <h3 className={"z-1 font-gugi text-yellow-300 drop-shadow-special"}>{item.name}</h3>
+                    <h3 className={"z-1 font-gugi text-yellow-300 text-sm drop-shadow-special"}>{moneyFormat.format(item.price)}</h3>
                 </div>
-                <div className={"flex flex-col h-full overflow-hidden text-sm justify-center items-center translate-y-4 group-hover:translate-y-0 transform group-hover:scale-125 transition-all duration-300"}>
+                <div className={"flex flex-col h-full overflow-hidden text-sm justify-center items-center translate-y-4 group-hover:translate-y-0 transform group-hover:scale-125 active:translate-y-0 transition-all duration-300"}>
                     <h4 className={"m-2 font-audiowide"}>{item.description}</h4>
+                    <h4 className={"m-2 font-audiowide"}><span className={"font-bold text-red-600"}>Notes:</span> {item.notes}</h4>
                 </div>
                 <div className={"flex flex-col grow justify-end m-1"}>
                     <div className={"flex row justify-between items-center"}>
