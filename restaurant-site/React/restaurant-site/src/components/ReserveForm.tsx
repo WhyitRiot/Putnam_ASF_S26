@@ -24,10 +24,10 @@ const ReserveForm = () => {
     })
     type formData = InferType<typeof schema>;
 
-    const {register, handleSubmit, setValue, reset, formState: {errors}} = useForm({
+    const {register, handleSubmit, reset, formState: {errors}} = useForm({
         defaultValues:{
             time: "",
-            date: "1/01/1999",
+            date: "1999/01/01",
             newsletter: false,
             seatingPref: "Indoor",
         },
@@ -35,7 +35,7 @@ const ReserveForm = () => {
     })
 
     const onSubmit = async (data : FieldValues) =>{
-        const parsedData = await schema.validate(data);
+        const parsedData : formData = await schema.validate(data);
         console.log(parsedData);
         reset();
     }
@@ -62,15 +62,15 @@ const ReserveForm = () => {
                             <p className={"text-xs text-red-300 h-full"}>{errors.firstName?.message}</p>
 
                         </div>
-                        <input type="text" id={fnameInput} {...register(fnameInput)} placeholder={"Dark"}/>
+                        <input type="text" id={fnameInput} {...register(fnameInput)} placeholder={"Dark"} className={"border border-white/50 rounded p-1"}/>
 
                     </div>
-                    <div className={"flex flex-col grow"}>
+                    <div className={"flex flex-col grow gap-1"}>
                         <div className={"flex-col"}>
                             <label htmlFor={lnameInput}>Last Name</label>
                             <p className={"text-xs text-red-300 h-full"}>{errors.lastName?.message}</p>
                         </div>
-                        <input type="text" id={lnameInput} {...register(lnameInput)} placeholder={"Helmet"}/>
+                        <input type="text" id={lnameInput} {...register(lnameInput)} placeholder={"Helmet"} className={"border border-white/50 rounded p-1"}/>
                     </div>
                 </div>
                 <div className={"[grid-area:email] flex flex-col"}>
@@ -78,18 +78,18 @@ const ReserveForm = () => {
                         <label htmlFor={emailInput}>Email</label>
                         <p className={"text-xs text-red-300 h-full"}>{errors.email?.message}</p>
                     </div>
-                    <input type="text" id={emailInput} {...register(emailInput)} placeholder={"lonestar@spaceballs.com"}/>
+                    <input type="text" id={emailInput} {...register(emailInput)} placeholder={"lonestar@spaceballs.com"} className={"border border-white/50 rounded p-1"}/>
                 </div>
                 <div className={"[grid-area:date] flex grow justify-between gap-3"}>
                     <div className={"flex flex-col"}>
                         <label htmlFor={dateInput}>Date</label>
                         <p className={"text-xs text-red-300 h-full"}>{errors.date?.message}</p>
-                        <input type="date" id={dateInput} {...register(dateInput)}/>
+                        <input type="date" id={dateInput} {...register(dateInput)} className={"border border-white/50 rounded p-1"}/>
                     </div>
                     <div className={"flex flex-col"}>
                         <label htmlFor={timeInput}>Time</label>
                         <p className={"text-xs text-red-300 h-full"}>{errors.time?.message}</p>
-                        <input type="time" id={timeInput} {...register(timeInput)}/>
+                        <input type="time" id={timeInput} {...register(timeInput)} className={"border border-white/50 rounded p-1"}/>
                     </div>
                 </div>
                 <div className="[grid-area:party] flex items-center gap-2">
@@ -107,30 +107,31 @@ const ReserveForm = () => {
                 </div>
                 <div className={"[grid-area:seating] flex flex-col justify-center"}>
                     <fieldset>
-                        <div className="flex space-x-2 border-[3px] border-purple-400 rounded-xl select-none">
+                        <div className="flex space-x-2 border-[3px]  border-yellow-600 rounded-xl select-none">
                             <label
                                 className="radio flex grow items-center justify-center rounded-lg p-1 cursor-pointer">
                                 <input type="radio" {...register(seatingInput)} value={"Indoor"} className="peer hidden"
+                                       defaultChecked
                                        />
                                 <span
-                                    className="tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[blueviolet] peer-checked:to-[violet] peer-checked:text-white text-gray-700 p-2 rounded-lg transition duration-150 ease-in-out">Indoor</span>
+                                    className="tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[orangered] peer-checked:to-[red] peer-checked:text-white text-white/50 p-2 rounded-lg transition duration-150 ease-in-out">Indoor</span>
                             </label>
                             <label
                                 className="radio flex grow items-center justify-center rounded-lg p-1 cursor-pointer">
                                 <input type="radio" {...register(seatingInput)} value={"Outdoor"} className="peer hidden"/>
                                 <span
-                                    className="tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[blueviolet] peer-checked:to-[violet] peer-checked:text-white text-gray-700 p-2 rounded-lg transition duration-150 ease-in-out">Outdoor</span>
+                                    className="tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[orangered] peer-checked:to-[red] peer-checked:text-white text-white/50 p-2 rounded-lg transition duration-150 ease-in-out">Outdoor</span>
                             </label>
                             <label
                                 className="radio flex grow items-center justify-center rounded-lg p-1 cursor-pointer">
                                 <input type="radio" {...register(seatingInput)} value={"Spaceport"} className="peer hidden"/>
                                 <span
-                                    className="tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[blueviolet] peer-checked:to-[violet] peer-checked:text-white text-gray-700 p-2 rounded-lg transition duration-150 ease-in-out">Spaceport</span>
+                                    className="tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[orangered] peer-checked:to-[red] peer-checked:text-white text-white/50 p-2 rounded-lg transition duration-150 ease-in-out">Spaceport</span>
                             </label>
                         </div>
                     </fieldset>
                 </div>
-                <div className={"[grid-area:news] place-content-center"}>
+                <div className={"[grid-area:news] flex flex-row justify-center items-center gap-2 place-content-center"}>
                     <input className="form-check-input" type="checkbox" id="inlineFormCheck"
                            {...register(newInput)}/>
                     <label className="form-check-label" htmlFor="inlineFormCheck">
@@ -140,9 +141,10 @@ const ReserveForm = () => {
                 <div className={"[grid-area:notes] flex flex-col h-full w-full"}>
                     <label htmlFor="notesInput">Notes</label>
                     <div className={"flex-1"}>
-                        <input type="text" id="notesInput" className={"w-full h-full"}
+                        <input type="text" id="notesInput" className={"w-full h-full border border-white/50 rounded p-1"}
                             {...register(notesInput)}
-                               placeholder="Dietary restrictions, special instructions..."/>
+                               placeholder="Dietary restrictions, special instructions..."
+                        />
                     </div>
                 </div>
                 <div className={"[grid-area:gus] flex justify-center align-middle md:justify-start"}>
@@ -155,8 +157,8 @@ const ReserveForm = () => {
                     </button>
                 </div>
                 <div className={"[grid-area:submit] flex p-2 items-center"}>
-                    <button type={"submit"} className="bg-white text-center w-full rounded-2xl h-14 relative text-black text-xl font-semibold group">
-                        <div className="bg-green-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-98/100 z-10 duration-500">
+                    <button type={"submit"} className="bg-white/50 hover:bg-white text-center w-full rounded-2xl h-14 relative text-black text-xl font-semibold group transition-all duration-500">
+                        <div className="bg-green-900 hover:bg-green-500 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-98/100 z-10 duration-500">
                             <svg className={"rotate-180"} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="25px" width="25px">
                                 <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z" fill="#000000" />
                                 <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z" fill="#000000" />
