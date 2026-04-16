@@ -1,0 +1,4 @@
+export const moneyFormat = new Intl.NumberFormat('default', {
+    style: 'currency',
+    currency: 'USD'
+})

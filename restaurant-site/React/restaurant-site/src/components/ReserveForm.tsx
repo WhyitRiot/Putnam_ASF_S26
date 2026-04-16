@@ -18,7 +18,7 @@ const ReserveForm = () => {
             .string()
             .required("Must enter a time!")
             .matches(/^([01]\d|2[0-3]):([0-5]\d)$/, "Must be a valid time"),
-        seatingPref: yup.string(),
+        seatingPref: yup.string().required("Please select a seating preference."),
         newsletter: yup.boolean(),
         notes: yup.string()
     })
@@ -51,7 +51,7 @@ const ReserveForm = () => {
     const notesInput = "notes";
 
     return (
-        <div className={"bg-default min-h-screen w-full bg-cover bg-center bg-no-repeat"}>
+
             <form onSubmit={handleSubmit(e => onSubmit(e))}
             className={"max-w-[75%] font-audiowide mx-auto border rounded-lg p-3 bg-white/25 grid sm:grid-cols-1 grid-rows-auto lg:grid-cols-3 lg:grid-rows-6 gap-2 lg:[grid-template-areas:'name_name_name'_'email_email_news'_'party_seating_seating'_'date_date_.'_'notes_notes_notes'_'notes_notes_notes'_'gus_reset_submit'] [grid-template-areas:'name'_'email'_'news'_'party'_'seating'_'date'_'time'_'notes'_'gus'_'reset'_'submit']"}
             >
@@ -94,7 +94,8 @@ const ReserveForm = () => {
                 </div>
                 <div className="[grid-area:party] flex items-center gap-2">
                     <label htmlFor="inputGroupSelect01">Party Size</label>
-                    <select id="inputGroupSelect01" {...register(partyInput, {valueAsNumber: true})}>
+                    <select id="inputGroupSelect01" {...register(partyInput, {valueAsNumber: true})}
+                            className={"border border-white/50 rounded p-1"}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -107,6 +108,7 @@ const ReserveForm = () => {
                 </div>
                 <div className={"[grid-area:seating] flex flex-col justify-center"}>
                     <fieldset>
+                        <p className={"text-xs text-red-300 h-full"}>{errors.seatingPref?.message}</p>
                         <div className="flex space-x-2 border-[3px]  border-yellow-600 rounded-xl select-none">
                             <label
                                 className="radio flex grow items-center justify-center rounded-lg p-1 cursor-pointer">
@@ -168,7 +170,6 @@ const ReserveForm = () => {
                     </button>
                 </div>
             </form>
-        </div>
     );
 };
 
