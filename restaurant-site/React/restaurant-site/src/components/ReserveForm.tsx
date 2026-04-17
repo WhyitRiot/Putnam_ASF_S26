@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import {date, type InferType} from "yup";
+import {type InferType} from "yup";
 import {type FieldValues, useForm} from "react-hook-form";
 import gusGalaxyLogo from "../assets/Gus_Galaxy_Grill_logo2.png"
 import {yupResolver} from "@hookform/resolvers/yup";
