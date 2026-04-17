@@ -1,11 +1,10 @@
 import {useContext, useState} from 'react';
-import {Dialog, DialogPanel, DialogTitle, Description} from "@headlessui/react";
 import {SiteContext} from "../context/SiteContext.tsx";
 import CartItem from "../components/CartItem.tsx";
 import {moneyFormat} from "../utilities/format.ts";
 import emptyCart from "../assets/empty-cart.gif"
-import gusLogo from "../assets/Gus_Galaxy_Grill_logo2.png"
 import {useNavigate} from "react-router-dom";
+import GusModal from "../components/GusModal.tsx";
 
 const Cart = () => {
     const navigate = useNavigate();
@@ -50,45 +49,25 @@ const Cart = () => {
     return (
         <div className={"bg-default min-h-screen w-full bg-cover bg-center bg-no-repeat"}>
 
-            <Dialog open={cancelConfirm} onClose={() => setCancelConfirm(false)} className="relative z-50">
-                <div className="fixed inset-0 flex bg-black/50 w-screen items-center justify-center p-4">
-                    <DialogPanel className="max-w-lg space-y-4 border-white drop-shadow-special bg-gray-300 p-12 text-black rounded-2xl">
-                        <DialogTitle className="flex flex-col items-center font-bold text-red-500 text-shadow-from font-atomic text-4xl lg:text-5xl">Canceled Order <img src={gusLogo} alt="Gus's Grill!"/></DialogTitle>
-                        <Description className={"flex font-dafoe text-3xl justify-center text-center"}>Your order is canceled!</Description>
-                        <div className="flex gap-4">
-                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={handleCancel}>Ok!</button>
-                        </div>
-                    </DialogPanel>
+            <GusModal title={"Canceled Order"} description={"Your order is canceled!"} openBool={cancelConfirm} setOpenBool={setCancelConfirm} Content={
+                <div className="flex gap-4">
+                    <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={handleCancel}>Ok!</button>
                 </div>
-            </Dialog>
+            } />
 
-            <Dialog open={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} className="relative z-50">
-                <div className="fixed inset-0 flex bg-black/50 w-screen items-center justify-center p-4">
-                    <DialogPanel className="max-w-lg space-y-4 border-white drop-shadow-special bg-gray-300 p-12 text-black rounded-2xl">
-                        <DialogTitle className="flex flex-col items-center font-bold text-red-500 text-shadow-from font-atomic text-4xl lg:text-5xl">Checkout <img src={gusLogo} alt="Gus's Grill!"/></DialogTitle>
-                        <Description className={"flex font-dafoe text-3xl justify-center text-center"}>Ready to checkout?</Description>
-                        <p className={"font-audiowide text-center"}>Checkout with {cartData.length} items totalling {moneyFormat.format(total)}</p>
-                        <div className="flex gap-4">
-                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-red-400 via-red-600 to-red-700 hover:to-red-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setIsCheckoutOpen(false)}>Cancel</button>
-                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={handleCheckout}>Checkout</button>
-                        </div>
-                    </DialogPanel>
+            <GusModal title={"Checkout"} description={"Ready to checkout?"} openBool={isCheckoutOpen} setOpenBool={setIsCheckoutOpen} Content={
+                <div className="flex gap-4">
+                    <button className={"flex-1 font-audiowide bg-gradient-to-b from-red-400 via-red-600 to-red-700 hover:to-red-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setIsCheckoutOpen(false)}>Cancel</button>
+                    <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={handleCheckout}>Checkout</button>
                 </div>
-            </Dialog>
+            } />
 
-            <Dialog open={isCancelOpen} onClose={() => setIsCancelOpen(false)} className="relative z-50">
-                <div className="fixed inset-0 flex bg-black/50 w-screen items-center justify-center p-4">
-                    <DialogPanel className="max-w-lg space-y-4 border-white drop-shadow-special bg-gray-300 p-12 text-black rounded-2xl">
-                        <DialogTitle className="flex flex-col items-center font-bold text-red-500 text-shadow-from font-atomic text-4xl lg:text-5xl">Cancel Order <img src={gusLogo} alt="Gus's Grill!"/></DialogTitle>
-                        <Description className={"flex font-dafoe text-3xl justify-center text-center"}>Cancel your Order?</Description>
-                        <p className={"font-audiowide text-center"}>Cancel order with {cartData.length} items totalling {moneyFormat.format(total)}</p>
-                        <div className="flex gap-4">
-                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-red-400 via-red-600 to-red-700 hover:to-red-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={openCancelConfirm}>Yes, Cancel</button>
-                            <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setIsCancelOpen(false)}>Go Back!</button>
-                        </div>
-                    </DialogPanel>
+            <GusModal title={"Cancel Order"} description={`Cancel order with ${cartData.length} items totaling ${moneyFormat.format(total)}`} openBool={isCancelOpen} setOpenBool={setIsCancelOpen} Content={
+                <div className="flex gap-4">
+                    <button className={"flex-1 font-audiowide bg-gradient-to-b from-red-400 via-red-600 to-red-700 hover:to-red-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={openCancelConfirm}>Yes, Cancel</button>
+                    <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setIsCancelOpen(false)}>Go Back!</button>
                 </div>
-            </Dialog>
+            } />
         <>
             {cartData.length > 0 ?
 

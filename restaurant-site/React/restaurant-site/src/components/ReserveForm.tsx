@@ -1,10 +1,13 @@
 import * as yup from "yup";
-import type {InferType} from "yup";
+import {date, type InferType} from "yup";
 import {type FieldValues, useForm} from "react-hook-form";
 import gusGalaxyLogo from "../assets/Gus_Galaxy_Grill_logo2.png"
 import {yupResolver} from "@hookform/resolvers/yup";
+import {useState} from "react";
+import GusModal from "./GusModal.tsx";
 
 const ReserveForm = () => {
+    const [modalOpen, setModalOpen] = useState(false);
     const schema = yup.object().shape({
         firstName: yup.string().max(20).required("Must be 20 characters or less!"),
         lastName: yup.string().max(20).required("Must be 20 characters or less!"),
@@ -24,19 +27,22 @@ const ReserveForm = () => {
     })
     type formData = InferType<typeof schema>;
 
-    const {register, handleSubmit, reset, formState: {errors}} = useForm({
+    const {register, handleSubmit, watch, reset, formState: {errors}} = useForm({
         defaultValues:{
-            time: "",
-            date: "1999/01/01",
+            time: "09:00",
+            date: "2026-01-01",
             newsletter: false,
             seatingPref: "Indoor",
         },
         resolver: yupResolver(schema)
     })
 
+    const date = watch("date");
+
     const onSubmit = async (data : FieldValues) =>{
         const parsedData : formData = await schema.validate(data);
         console.log(parsedData);
+        setModalOpen(true);
         reset();
     }
 
@@ -51,6 +57,12 @@ const ReserveForm = () => {
     const notesInput = "notes";
 
     return (
+        <>
+        <GusModal title={"We Saved Your Seat!"} description={`We'll see you on ${date}!`} openBool={modalOpen} setOpenBool={setModalOpen} Content={
+            <div className="flex gap-4">
+                <button className={"flex-1 font-audiowide bg-gradient-to-b from-blue-400 via-blue-600 to-blue-700 hover:to-blue-600 hover:cursor-pointer text-white font-semibold rounded-md"} onClick={() => setModalOpen(false)}>Ok!</button>
+            </div>
+        } />
 
             <form onSubmit={handleSubmit(e => onSubmit(e))}
             className={"max-w-[75%] font-audiowide mx-auto border rounded-lg p-3 bg-white/25 grid sm:grid-cols-1 grid-rows-auto lg:grid-cols-3 lg:grid-rows-6 gap-2 lg:[grid-template-areas:'name_name_name'_'email_email_news'_'party_seating_seating'_'date_date_.'_'notes_notes_notes'_'notes_notes_notes'_'gus_reset_submit'] [grid-template-areas:'name'_'email'_'news'_'party'_'seating'_'date'_'time'_'notes'_'gus'_'reset'_'submit']"}
@@ -170,6 +182,7 @@ const ReserveForm = () => {
                     </button>
                 </div>
             </form>
+            </>
     );
 };
 

@@ -1,6 +1,5 @@
 import ReserveForm from "../components/ReserveForm.tsx";
 
-
 const Reservations = () => {
     return (
         <div className={"bg-default min-h-screen w-full bg-cover bg-center bg-no-repeat"}>
